@@ -75,6 +75,23 @@ public class Program
         return root;
     }
 
+    //对称二叉树
+    public bool IsSymmetric(TreeNode root)
+    {
+        if(root == null)return true;
+        return CheckNode(root.left, root.right);
+    }
+
+    private bool CheckNode(TreeNode left, TreeNode right)
+    {
+        //都为空则对称
+        if(left == null && right == null)return true;
+        //一个为空另一个不为空则不对称
+        if(left == null || right == null)return false;
+        if(left.val != right.val)return false;
+        return CheckNode(left.left, right.right) && CheckNode(left.right, right.left);
+    }
+
     public static void Main(string[] args)
     {
         Program program = new Program();
